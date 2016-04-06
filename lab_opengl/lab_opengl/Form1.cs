@@ -79,6 +79,8 @@ namespace lab_opengl
                     width / (float)height, 1, 64);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadMatrix(ref perspectiveMat);
+
+            SetupLightning();
         }
 
         public void Update()
@@ -119,13 +121,27 @@ namespace lab_opengl
         public void Render()
         {
             drawTestQuad();
-            drawTexturedQuad();
             GL.PushMatrix();
             GL.Translate(1, 1, 1);
             GL.Rotate(rotateAngle, Vector3.UnitZ);
             GL.Scale(0.5f, 0.5f, 0.5f);
-            drawTestQuad();
+            drawTexturedQuad();
             GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0, 0, 1);
+            GL.Scale(0.5f, 0.5f, 0.5f);
+            GL.Color3(Color.BlueViolet);
+            drawSphere(0.5f, 20, 20);
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0, 0, 3);
+            GL.Scale(0.5f, 0.5f, 0.5f);
+            GL.Color3(Color.Black);
+            drawPoint();
+            GL.PopMatrix();
+            //drawTexturedQuad();
         }
 
         public int LoadTexture(String filePath)
@@ -172,6 +188,57 @@ namespace lab_opengl
             GL.Vertex3(1.0f, -1.0f, -1.0f);
             GL.End();
             GL.Disable(EnableCap.Texture2D);
+        }
+
+        public void SetupLightning()
+        {
+            GL.Enable(EnableCap.Lighting);
+            GL.Enable(EnableCap.Light0);
+            GL.Enable(EnableCap.ColorMaterial);
+
+            Vector4 lightPosition = new Vector4(1.0f, 1.0f, 4.0f, 0.0f);
+            GL.Light(LightName.Light0, LightParameter.Position, lightPosition);
+
+            Vector4 ambientColor = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
+            GL.Light(LightName.Light0, LightParameter.Ambient, ambientColor);
+
+            Vector4 diffuseColor = new Vector4(0.6f, 0.6f, 0.6f, 1.0f);
+            GL.Light(LightName.Light0, LightParameter.Diffuse, diffuseColor);
+
+            Vector4 materialSpecular = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+            GL.Material(MaterialFace.Front, MaterialParameter.Specular, materialSpecular);
+            float materialShininess = 100;
+            GL.Material(MaterialFace.Front, MaterialParameter.Shininess, materialShininess);
+        }
+
+        private void drawSphere(double r, int nx, int ny)
+        {
+            int ix, iy;
+            double x, y, z;
+            for (iy = 0; iy < ny; ++iy)
+            {
+                GL.Begin(BeginMode.QuadStrip);
+                for (ix = 0; ix <= nx; ++ix)
+                {
+                    x = r * Math.Sin(iy * Math.PI / ny) * Math.Cos(2 * ix * Math.PI / nx);
+                    y = r * Math.Sin(iy * Math.PI / ny) * Math.Sin(2 * ix * Math.PI / nx);
+                    z = r * Math.Cos(iy * Math.PI / ny);
+                    GL.Normal3(x, y, z);
+                    GL.Vertex3(x, y, z);
+
+                    x = r * Math.Sin((iy + 1) * (Math.PI / ny)) * Math.Cos(2 * ix * Math.PI / nx);
+                    y = r * Math.Sin((iy + 1) * Math.PI / ny) * Math.Sin(2 * ix * Math.PI / nx);
+                    z = r * Math.Cos((iy + 1) * Math.PI / ny);
+                    GL.Normal3(x, y, z);
+                    GL.Vertex3(x, y, z);
+                }
+                GL.End();
+            }
+        }
+
+        private void drawPoint()
+        {
+            drawSphere(0.05f, 20, 20);
         }
     }
 }
