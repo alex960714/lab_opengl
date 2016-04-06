@@ -120,7 +120,15 @@ namespace lab_opengl
 
         public void Render()
         {
+            drawTriangle();
+
+            GL.PushMatrix();
+            GL.Translate(0, 0, -0.1f);
+            //GL.Rotate(rotateAngle, Vector3.UnitZ);
+            GL.Scale(0.5f, 0.5f, 0.5f);
             drawTestQuad();
+            GL.PopMatrix();
+
             GL.PushMatrix();
             GL.Translate(1, 1, 1);
             GL.Rotate(rotateAngle, Vector3.UnitZ);
@@ -128,12 +136,12 @@ namespace lab_opengl
             drawTexturedQuad();
             GL.PopMatrix();
 
-            GL.PushMatrix();
+            /*GL.PushMatrix();
             GL.Translate(0, 0, 1);
-            GL.Scale(0.5f, 0.5f, 0.5f);
+            GL.Scale(0.5f, 0.5f, 0.5f);*/
             GL.Color3(Color.BlueViolet);
-            drawSphere(0.5f, 20, 20);
-            GL.PopMatrix();
+            drawSphere(2.0f, 20, 20);
+            //GL.PopMatrix();
 
             GL.PushMatrix();
             GL.Translate(0, 0, 3);
@@ -213,32 +221,48 @@ namespace lab_opengl
 
         private void drawSphere(double r, int nx, int ny)
         {
+            GL.Enable(EnableCap.Texture2D);
+            GL.BindTexture(TextureTarget.Texture2D, texturesIDs[0]);
             int ix, iy;
             double x, y, z;
             for (iy = 0; iy < ny; ++iy)
             {
-                GL.Begin(BeginMode.QuadStrip);
+                //GL.Enable(EnableCap.Texture2D);
+                //GL.BindTexture(TextureTarget.Texture2D, texturesIDs[0]);
+                GL.Begin(PrimitiveType.QuadStrip);
                 for (ix = 0; ix <= nx; ++ix)
                 {
                     x = r * Math.Sin(iy * Math.PI / ny) * Math.Cos(2 * ix * Math.PI / nx);
                     y = r * Math.Sin(iy * Math.PI / ny) * Math.Sin(2 * ix * Math.PI / nx);
                     z = r * Math.Cos(iy * Math.PI / ny);
+                    GL.TexCoord2((float)ix/nx, (float)iy/ny);
                     GL.Normal3(x, y, z);
                     GL.Vertex3(x, y, z);
 
                     x = r * Math.Sin((iy + 1) * (Math.PI / ny)) * Math.Cos(2 * ix * Math.PI / nx);
                     y = r * Math.Sin((iy + 1) * Math.PI / ny) * Math.Sin(2 * ix * Math.PI / nx);
                     z = r * Math.Cos((iy + 1) * Math.PI / ny);
+                    GL.TexCoord2((float)ix/nx, (float)iy/ny+1.0/ny);
                     GL.Normal3(x, y, z);
                     GL.Vertex3(x, y, z);
                 }
                 GL.End();
+                //GL.Disable(EnableCap.Texture2D);
             }
+            GL.Disable(EnableCap.Texture2D);
         }
 
         private void drawPoint()
         {
             drawSphere(0.05f, 20, 20);
+        }
+
+        private void drawTriangle()
+        {
+            GL.Begin(PrimitiveType.Triangles);
+            GL.Color3(Color.Green);
+            GL.Vertex3(0.0f, 0.0f, 0.0f);
+            GL.End();
         }
     }
 }
