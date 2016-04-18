@@ -17,7 +17,7 @@ namespace lab_opengl
         Vector3 cameraUp = new Vector3(0, 0, 1);
 
         public float latitude = 47.98f;
-        public float longitude = 60.41f;
+        public float longitude = 0;
         public float radius = 5.385f;
 
         public float rotateAngle = 0;
@@ -26,6 +26,10 @@ namespace lab_opengl
         public float dx = 0, dx1 = 0;
         public float dy = 0, dy1 = 0;
         public float dz = 0, dz1 = 0;
+
+        public bool rotX = false;
+        public bool rotY = false;
+        public bool rotZ = false;
 
         public List<int> texturesIDs = new List<int>();
 
@@ -59,13 +63,16 @@ namespace lab_opengl
             Render();
 
 
-            cameraPosition = new Vector3(//dx+
+            cameraPosition = new Vector3(dx+
                 (float)(radius * Math.Cos(Math.PI / 180.0f * latitude) *
-                Math.Cos(Math.PI / 180.0f * longitude)),//dy+
+                Math.Cos(Math.PI / 180.0f * longitude)),dy+
                 (float)(radius * Math.Cos(Math.PI / 180.0f * latitude) *
-                Math.Sin(Math.PI / 180.0f * longitude)),//0.3f+
+                Math.Sin(Math.PI / 180.0f * longitude)),
                 (float)(radius * Math.Sin(Math.PI / 180.0f * latitude)));
 
+            cameraDirection = new Vector3(dx, dy, 0.3f);
+
+            SetupLightning();
 
             dx1 = dx;
             dy1 = dy;
@@ -112,8 +119,11 @@ namespace lab_opengl
 
             GL.PushMatrix();
             GL.Translate(dx, dy, 0.3f);
-            GL.Rotate(rotateAngleX, Vector3d.UnitY);
-            GL.Rotate(rotateAngleY, Vector3d.UnitX);
+            //if (rotX)
+                GL.Rotate(rotateAngleX, Vector3d.UnitY);
+            //if (rotY)
+                GL.Rotate(rotateAngleY, Vector3d.UnitX);
+            //GL.Rotate(rotateAngleX + rotateAngleY, dx1 - dx, dy1 - dy, dz1 - dz);
             GL.Scale(0.5f, 0.5f, 0.5f);
             GL.Color3(Color.BlueViolet);
             drawTexturedSphere(0.5f, 50, 50);
@@ -189,7 +199,7 @@ namespace lab_opengl
             GL.Enable(EnableCap.ColorMaterial);
             GL.Enable(EnableCap.Light1);
 
-            Vector4 lightPosition = new Vector4(3.1f, 2.0f, 6.0f, 0.0f);
+            Vector4 lightPosition = new Vector4(dx+3.1f, dy+2.0f, 6.0f, 0.0f);
             GL.Light(LightName.Light0, LightParameter.Position, lightPosition);
 
             Vector4 ambientColor = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);

@@ -59,15 +59,27 @@ namespace lab_opengl
 
         private void glControl1_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
             if (e.KeyCode == Keys.W)
-                glgraphics.dx += 0.1f;
+            {
+                glgraphics.dx -= 0.1f*(float) Math.Cos(Math.PI / 180.0f * glgraphics.longitude);
+                glgraphics.dy -= 0.1f * (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude);
+            }
             if (e.KeyCode == Keys.S)
-                glgraphics.dx -= 0.1f;
+            {
+                glgraphics.dx += 0.1f * (float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude);
+                glgraphics.dy += 0.1f * (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude);
+            }
             if (e.KeyCode == Keys.A)
-                glgraphics.dy += 0.1f;
+            {
+                glgraphics.dx -= 0.1f * (float)Math.Cos(90.0f+Math.PI / 180.0f * glgraphics.longitude);
+                glgraphics.dy -= 0.1f * (float)Math.Sin(90.0f+Math.PI / 180.0f * glgraphics.longitude);
+            }
             if (e.KeyCode == Keys.D)
-                glgraphics.dy -= 0.1f;
+            {
+                glgraphics.dx += 0.1f * (float)Math.Cos(90.0f+Math.PI / 180.0f * glgraphics.longitude);
+                glgraphics.dy += 0.1f * (float)Math.Sin(90.0f+Math.PI / 180.0f * glgraphics.longitude);
+            }
 
         }
     }
