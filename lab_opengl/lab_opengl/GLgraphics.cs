@@ -19,10 +19,8 @@ namespace lab_opengl
         public float latitude = 47.98f;
         public float longitude = 0;
         public float radius = 5.385f;
-
+        
         public float rotateAngle = 0;
-        public float rotateAngleX = 0;
-        public float rotateAngleY = 0;
         public float dx = 0, dx1 = 0;
         public float dy = 0, dy1 = 0;
         public float dz = 0, dz1 = 0;
@@ -30,6 +28,9 @@ namespace lab_opengl
         public bool rotX = false;
         public bool rotY = false;
         public bool rotZ = false;
+
+        public Vector3 rotate = new Vector3(Vector3.UnitY);
+       // Vector3 rotateY = new Vector3(Vector3.UnitX);
 
         public List<int> texturesIDs = new List<int>();
 
@@ -51,8 +52,8 @@ namespace lab_opengl
 
         public void Update()
         {
-            rotateAngleX = rotateAngleX + (float)((dx - dx1) * 180 / (0.5f * Math.PI));
-            rotateAngleY = rotateAngleY - (float)((dy - dy1) * 180 / (0.5f * Math.PI));
+            //rotateAngleX = rotateAngleX + (float)((dx - dx1) * 180 / (0.5f * Math.PI));
+            //rotateAngleY = rotateAngleY - (float)((dy - dy1) * 180 / (0.5f * Math.PI));
             GL.Clear(ClearBufferMask.ColorBufferBit |
                 ClearBufferMask.DepthBufferBit);
             Matrix4 viewMat = Matrix4.LookAt(
@@ -70,7 +71,7 @@ namespace lab_opengl
                 Math.Sin(Math.PI / 180.0f * longitude)),
                 (float)(radius * Math.Sin(Math.PI / 180.0f * latitude)));
 
-            cameraDirection = new Vector3(dx, dy, 0.3f);
+            cameraDirection = new Vector3(dx, dy, 0.25f);
 
             SetupLightning();
 
@@ -93,6 +94,20 @@ namespace lab_opengl
             GL.End();
         }
 
+        private void drawQuad()
+        {
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color3(Color.Blue);
+            GL.Vertex3(-0.5f, -1.0f, 0.0f);
+            GL.Color3(Color.Red);
+            GL.Vertex3(-0.5f, 1.0f, 0.0f);
+            GL.Color3(Color.White);
+            GL.Vertex3(0.5f, 1.0f, 0.0f);
+            GL.Color3(Color.Green);
+            GL.Vertex3(0.5f, -1.0f, 0.0f);
+            GL.End();
+        }
+
         public void Render()
         {
             /*GL.PushMatrix();
@@ -110,6 +125,13 @@ namespace lab_opengl
             drawTestQuad();
             GL.PopMatrix();
 
+            GL.PushMatrix();
+            GL.Translate(2.5f, 0, 1.0f);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(2.0f, 2.5f, 2.5f);
+            drawQuad();
+            GL.PopMatrix();
+
             /*GL.PushMatrix();
             GL.Translate(1, 1, 1);
             GL.Rotate(rotateAngle, Vector3.UnitZ);
@@ -118,11 +140,12 @@ namespace lab_opengl
             GL.PopMatrix();*/
 
             GL.PushMatrix();
-            GL.Translate(dx, dy, 0.3f);
-            //if (rotX)
-                GL.Rotate(rotateAngleX, Vector3d.UnitY);
+            GL.Translate(dx, dy, 0.25f);
+           // if (rotX)
+                GL.Rotate(rotateAngle, rotate);
+            
             //if (rotY)
-                GL.Rotate(rotateAngleY, Vector3d.UnitX);
+                //GL.Rotate(rotateAngleY, Vector3.UnitX);
             //GL.Rotate(rotateAngleX + rotateAngleY, dx1 - dx, dy1 - dy, dz1 - dz);
             GL.Scale(0.5f, 0.5f, 0.5f);
             GL.Color3(Color.BlueViolet);
@@ -178,16 +201,16 @@ namespace lab_opengl
             GL.Begin(PrimitiveType.Quads);
             GL.Color3(Color.Blue);
             GL.TexCoord2(0.0, 0.0);
-            GL.Vertex3(-1.0f, -1.0f, -1.0f);
+            GL.Vertex3(-0.5f, -1.0f, -1.0f);
             GL.Color3(Color.Red);
             GL.TexCoord2(0.0, 1.0);
-            GL.Vertex3(-1.0f, 1.0f, -1.0f);
+            GL.Vertex3(-0.5f, 1.0f, -1.0f);
             GL.Color3(Color.White);
             GL.TexCoord2(1.0, 1.0);
-            GL.Vertex3(1.0f, 1.0f, -1.0f);
+            GL.Vertex3(0.5f, 1.0f, -1.0f);
             GL.Color3(Color.Green);
             GL.TexCoord2(1.0, 0.0);
-            GL.Vertex3(1.0f, -1.0f, -1.0f);
+            GL.Vertex3(0.5f, -1.0f, -1.0f);
             GL.End();
             GL.Disable(EnableCap.Texture2D);
         }

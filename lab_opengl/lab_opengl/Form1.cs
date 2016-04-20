@@ -59,28 +59,58 @@ namespace lab_opengl
 
         private void glControl1_KeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.KeyCode == Keys.W)
             {
-                glgraphics.dx -= 0.1f*(float) Math.Cos(Math.PI / 180.0f * glgraphics.longitude);
+                /*glgraphics.rotX = true;
+                glgraphics.rotY = false;*/
+                glgraphics.dx -= 0.1f * (float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude);
                 glgraphics.dy -= 0.1f * (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude);
+
+                glgraphics.rotateAngle = glgraphics.rotateAngle + (float)(Math.Sqrt(Math.Pow(0.1f * (float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude),2) +
+                    Math.Pow(0.1f * (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude),2)) * 180 / (0.5f * Math.PI));
+                glgraphics.rotate = new Vector3((float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude), -(float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude), 0);
             }
             if (e.KeyCode == Keys.S)
             {
+                //glgraphics.rotX = true;
+                //glgraphics.rotY = false;
                 glgraphics.dx += 0.1f * (float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude);
                 glgraphics.dy += 0.1f * (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude);
+
+                glgraphics.rotateAngle = glgraphics.rotateAngle - (float)(Math.Sqrt(Math.Pow(0.1f * (float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude), 2) +
+                    Math.Pow(0.1f * (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude), 2)) * 180 / (0.5f * Math.PI));
+                glgraphics.rotate = new Vector3((float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude), -(float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude), 0);
             }
             if (e.KeyCode == Keys.A)
             {
-                glgraphics.dx -= 0.1f * (float)Math.Cos(90.0f+Math.PI / 180.0f * glgraphics.longitude);
-                glgraphics.dy -= 0.1f * (float)Math.Sin(90.0f+Math.PI / 180.0f * glgraphics.longitude);
+                //glgraphics.rotY = true;
+                //glgraphics.rotX = false;
+                glgraphics.dx -= 0.1f * (float)Math.Cos(90.0f + Math.PI / 180.0f * glgraphics.longitude);
+                glgraphics.dy -= 0.1f * (float)Math.Sin(90.0f + Math.PI / 180.0f * glgraphics.longitude);
+
+                glgraphics.rotateAngle = glgraphics.rotateAngle + (float)(Math.Sqrt(Math.Pow(0.1f * (float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude), 2) +
+                    Math.Pow(0.1f * (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude), 2)) * 180 / (0.5f * Math.PI));
+                glgraphics.rotate = new Vector3((float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude), (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude), 0);
             }
             if (e.KeyCode == Keys.D)
             {
-                glgraphics.dx += 0.1f * (float)Math.Cos(90.0f+Math.PI / 180.0f * glgraphics.longitude);
-                glgraphics.dy += 0.1f * (float)Math.Sin(90.0f+Math.PI / 180.0f * glgraphics.longitude);
-            }
+               // glgraphics.rotY = true;
+                //glgraphics.rotX = false;
+                glgraphics.dx += 0.1f * (float)Math.Cos(90.0f + Math.PI / 180.0f * glgraphics.longitude);
+                glgraphics.dy += 0.1f * (float)Math.Sin(90.0f + Math.PI / 180.0f * glgraphics.longitude);
 
+                glgraphics.rotateAngle = glgraphics.rotateAngle - (float)(Math.Sqrt(Math.Pow(0.1f * (float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude), 2) +
+                    Math.Pow(0.1f * (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude), 2)) * 180 / (0.5f * Math.PI));
+                glgraphics.rotate = new Vector3((float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude), (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude), 0);
+            }
+            if (glgraphics.dx > 2.249f)
+                glgraphics.dx = 2.249f;
+            if (glgraphics.dx < -2.249f)
+                glgraphics.dx = -2.249f;
+            if (glgraphics.dy > 2.249f)
+                glgraphics.dy = 2.249f;
+            if (glgraphics.dy < -2.249f)
+                glgraphics.dy = -2.249f;
         }
     }
 
