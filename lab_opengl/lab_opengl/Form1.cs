@@ -28,6 +28,21 @@ namespace lab_opengl
             Application.Idle += Application_Idle;
             int texID = glgraphics.LoadTexture("NNMetro.png");
             glgraphics.texturesIDs.Add(texID);
+            texID = glgraphics.LoadTexture("waterfall.jpg");
+            glgraphics.texturesIDs.Add(texID);
+            texID = glgraphics.LoadTexture("stones.jpg");
+            glgraphics.texturesIDs.Add(texID);
+            texID = glgraphics.LoadTexture("stars_2.png");
+            glgraphics.texturesIDs.Add(texID);
+            texID = glgraphics.LoadTexture("river.jpg");
+            glgraphics.texturesIDs.Add(texID);
+            texID = glgraphics.LoadTexture("forest.jpg");
+            glgraphics.texturesIDs.Add(texID);
+            texID = glgraphics.LoadTexture("sands.jpg");
+            glgraphics.texturesIDs.Add(texID);
+            texID = glgraphics.LoadTexture("rocks.jpg");
+            glgraphics.texturesIDs.Add(texID);
+
         }
 
         private void glControl1_Paint(object sender, PaintEventArgs e)
@@ -105,8 +120,8 @@ namespace lab_opengl
             }
             if (glgraphics.dx > 2.249f)
                 glgraphics.dx = 2.249f;
-            if (glgraphics.dx < -2.249f)
-                glgraphics.dx = -2.249f;
+            if (glgraphics.dx < -7.249f)
+                glgraphics.dx = -7.249f;
             if (glgraphics.dy > 2.249f)
                 glgraphics.dy = 2.249f;
             if (glgraphics.dy < -2.249f)
