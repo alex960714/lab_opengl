@@ -42,6 +42,12 @@ namespace lab_opengl
             glgraphics.texturesIDs.Add(texID);
             texID = glgraphics.LoadTexture("rocks.jpg");
             glgraphics.texturesIDs.Add(texID);
+            texID = glgraphics.LoadTexture("grass.jpg");
+            glgraphics.texturesIDs.Add(texID);
+            texID = glgraphics.LoadTexture("bridge.jpg");
+            glgraphics.texturesIDs.Add(texID);
+            texID = glgraphics.LoadTexture("forest_2.jpg");
+            glgraphics.texturesIDs.Add(texID);
 
         }
 
@@ -118,13 +124,17 @@ namespace lab_opengl
                     Math.Pow(0.1f * (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude), 2)) * 180 / (0.5f * Math.PI));
                 glgraphics.rotate = new Vector3((float)Math.Cos(Math.PI / 180.0f * glgraphics.longitude), (float)Math.Sin(Math.PI / 180.0f * glgraphics.longitude), 0);
             }
-            if (glgraphics.dx > 2.249f)
-                glgraphics.dx = 2.249f;
-            if (glgraphics.dx < -7.249f)
-                glgraphics.dx = -7.249f;
-            if (glgraphics.dy > 2.249f)
+            if (glgraphics.dx > 17.249f)
+                glgraphics.dx = 17.249f;
+            if ((glgraphics.dx < 2.749f)&&(glgraphics.dx>-2.249f)&&(glgraphics.dy>-7.749f)&&(glgraphics.dy<2.249f))
+                glgraphics.dx = 2.749f;
+            if ((glgraphics.dx > 7.749f)&& (glgraphics.dy < -2.749f) && (glgraphics.dy > -12.249f))
+                glgraphics.dx = 7.749f;
+            if ((glgraphics.dy > 2.249f)&&(glgraphics.dx>-12.249f)&&(glgraphics.dy<5.0f))
                 glgraphics.dy = 2.249f;
-            if (glgraphics.dy < -2.249f)
+            if ((glgraphics.dy < 7.749f) && (glgraphics.dx > -12.249f)&& (glgraphics.dy > 5.0f))
+                glgraphics.dy = 7.749f;
+            if ((glgraphics.dy < -2.249f)&&(glgraphics.dx>7.449f))
                 glgraphics.dy = -2.249f;
         }
     }

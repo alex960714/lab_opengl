@@ -21,7 +21,7 @@ namespace lab_opengl
         public float radius = 5.385f;
         
         public float rotateAngle = 0;
-        public float dx = 0, dx1 = 0;
+        public float dx = 15.0f, dx1 = 0;
         public float dy = 0, dy1 = 0;
         public float dz = 0, dz1 = 0;
 
@@ -139,33 +139,25 @@ namespace lab_opengl
             drawPoint();
             GL.PopMatrix();
 
-            GL.PushMatrix();
-            GL.Translate(0, 0, 2.5f);
-            GL.Scale(5.0f, 2.5f, 2.5f);
-            drawTexturedQuad2();
-            GL.PopMatrix();
-
-            GL.PushMatrix();
-            GL.Translate(-5.0f, 0, 2.5f);
-            GL.Scale(5.0f, 2.5f, 2.5f);
-            drawTexturedQuad2();
-            GL.PopMatrix();
-
-            GL.PushMatrix();
+            /*GL.PushMatrix();
             GL.Translate(-2.5f, 2.5f, 0.0f);
             GL.Rotate(180, Vector3.UnitZ);
             GL.Rotate(180, Vector3.UnitX);
             GL.Scale(5.0f, 2.5f, 2.5f);
             drawStonesTriangle();
-            GL.PopMatrix();
+            GL.PopMatrix();*/
+
+            //водопад
 
             GL.PushMatrix();
-            GL.Translate(5.0f, 5.0f, 1.5f);
+            GL.Translate(20.0f, 5.0f, 1.5f);
             GL.Rotate(270, Vector3.UnitX);
             GL.Rotate(90, Vector3.UnitY);
             GL.Scale(5.0f, 1.5f, 2.5f);
             drawTexturedQuad();
             GL.PopMatrix();
+
+            //шарик
         
             GL.PushMatrix();
             GL.Translate(dx, dy, 0.25f);
@@ -175,38 +167,71 @@ namespace lab_opengl
             drawTexturedSphere(0.5f, 50, 50);
             GL.PopMatrix();
 
+            //небо
+
             GL.PushMatrix();
             //GL.Translate(dx, dy, 0.25f);
             //GL.Rotate(rotateAngle, rotate);
             GL.Scale(1.0f, 1.0f, 1.0f);
             GL.Color3(Color.White);
-            drawTexturedSphere2(50.0f, 200, 200);
+            drawTexturedSphere2(25.0f, 200, 200);
             GL.PopMatrix();
 
-            GL.PushMatrix();
-            GL.Translate(0, 5.0f, 2.5f);
-            GL.Rotate(90, Vector3.UnitZ);
-            GL.Scale(5.0f, 2.5f, 2.5f);
-            drawWaterQuad();
-            GL.PopMatrix();
+            //вода
 
             GL.PushMatrix();
-            GL.Translate(-7.5f, 5.0f, 0.0f);
-            //GL.Rotate(180, Vector3.UnitZ);
-            GL.Rotate(180, Vector3.UnitX);
-            GL.Scale(5.0f, 2.5f, 2.5f);
-            drawWaterTriangle();
-            GL.PopMatrix();
-
-            GL.PushMatrix();
-            GL.Translate(-5.0f, 6.25f, 2.5f);
+            GL.Translate(15.0f, 5.0f, 2.5f);
             GL.Rotate(90, Vector3.UnitZ);
             GL.Scale(2.5f, 2.5f, 2.5f);
             drawWaterQuad();
             GL.PopMatrix();
 
             GL.PushMatrix();
-            GL.Translate(0.0f, -5.0f, 1.5f);
+            GL.Translate(10.0f, 5.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawWaterQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, 5.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawWaterQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0.0f, 5.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawWaterQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-5.0f, 5.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawWaterQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-10.0f, 5.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawWaterQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-20.0f, 5.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawWaterQuad();
+            GL.PopMatrix();
+
+            //скалы
+
+            GL.PushMatrix();
+            GL.Translate(15.0f, -5.0f, 1.5f);
             GL.Rotate(270, Vector3.UnitX);
             GL.Rotate(180, Vector3.UnitY);
             GL.Scale(5.0f, 1.5f, 2.5f);
@@ -214,7 +239,15 @@ namespace lab_opengl
             GL.PopMatrix();
 
             GL.PushMatrix();
-            GL.Translate(5.0f, 0, 1.5f);
+            GL.Translate(10.0f, -5.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(20.0f, 0, 1.5f);
             GL.Rotate(270, Vector3.UnitX);
             GL.Rotate(90, Vector3.UnitY);
             GL.Scale(5.0f, 1.5f, 2.5f);
@@ -222,11 +255,455 @@ namespace lab_opengl
             GL.PopMatrix();
 
             GL.PushMatrix();
-            GL.Translate(-2.5f, -6.0f, 1.5f);
+            GL.Translate(10.0f, -5.0f, 1.5f);
             GL.Rotate(270, Vector3.UnitX);
-            GL.Rotate(135, Vector3.UnitY);
+            GL.Rotate(90, Vector3.UnitY);
             GL.Scale(5.0f, 1.5f, 2.5f);
             drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(10.0f, -10.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+            
+
+            //скалы - другой берег
+
+            GL.PushMatrix();
+            GL.Translate(20.0f, 10.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(20.0f, 15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(15.0f, 10.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, 10.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(15.0f, 15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(10.0f, 15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, 15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(10.0f, 10.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, 10.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(10.0f, 5.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, 5.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawRocksQuad();
+            GL.PopMatrix();
+
+            //лес
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, -15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0, -15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-5.0f, -15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0, -10.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0, 0, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, 0, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, -5.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad2();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-15.0f, 0, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0, 0, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0, -5.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad2();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-5.0f, -5.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-5.0f, -10.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+
+            GL.PushMatrix();
+            GL.Translate(-15.0f, -5.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-10.0f, -5.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            //лес - другой берег
+
+            GL.PushMatrix();
+            GL.Translate(-10.0f, 15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-5.0f, 15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0, 15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-15.0f, 10.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(180, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-15.0f, 10.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-10.0f, 15.0f, 1.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Scale(5.0f, 1.5f, 2.5f);
+            drawForestQuad();
+            GL.PopMatrix();
+
+            //камни
+
+            GL.PushMatrix();
+            GL.Translate(15.0f, 0, 2.5f);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawTexturedQuad2();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(10.0f, 0, 2.5f);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawTexturedQuad2();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, 0, 2.5f);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawTexturedQuad2();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(15.0f, 10.0f, 2.5f);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawTexturedQuad2();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(15.0f, 15.0f, 2.5f);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawTexturedQuad2();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(10.0f, 15.0f, 2.5f);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawTexturedQuad2();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, 15.0f, 2.5f);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawTexturedQuad2();
+            GL.PopMatrix();
+
+            //трава
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, -5.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawGrassQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(5.0f, -10.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawGrassQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0, -10.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawGrassQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-5.0f, -10.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawGrassQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-5.0f, -5.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawGrassQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0, 15.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawGrassQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-5.0f, 15.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawGrassQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-10.0f, 15.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawGrassQuad();
+            GL.PopMatrix();
+
+            //песок
+
+            GL.PushMatrix();
+            GL.Translate(-5.0f, 0, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawSandsQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-10.0f, 0, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawSandsQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-15.0f, 0, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawSandsQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-15.0f, 10.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawSandsQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-10.0f, 10.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawSandsQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-5.0f, 10.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawSandsQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(0.0f, 10.0f, 2.5f);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawSandsQuad();
+            GL.PopMatrix();
+
+            //мост
+
+            GL.PushMatrix();
+            GL.Translate(-15.0f, 5.0f, 2.5f);
+            GL.Rotate(180, Vector3.UnitZ);
+            GL.Scale(2.5f, 2.5f, 2.5f);
+            drawBridgeQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-10.0f, 5.0f, 0.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(0.5f, 2.5f, 2.5f);
+            drawBridgeQuad();
+            GL.PopMatrix();
+
+            GL.PushMatrix();
+            GL.Translate(-15.0f, 5.0f, 0.5f);
+            GL.Rotate(270, Vector3.UnitX);
+            GL.Rotate(90, Vector3.UnitY);
+            GL.Rotate(90, Vector3.UnitZ);
+            GL.Scale(0.5f, 2.5f, 2.5f);
+            drawBridgeQuad();
             GL.PopMatrix();
         }
 
@@ -280,14 +757,14 @@ namespace lab_opengl
             GL.BindTexture(TextureTarget.Texture2D, texturesIDs[2]);
             GL.Begin(PrimitiveType.Quads);
             GL.Color3(Color.Aquamarine);
-            GL.TexCoord2(1.0, 0.0);
-            GL.Vertex3(0.5f, -1.0f, -1.0f);
-            GL.TexCoord2(0.0, 0.0);
-            GL.Vertex3(-0.5f, -1.0f, -1.0f);
-            GL.TexCoord2(0.0, 1.0);
-            GL.Vertex3(-0.5f, 1.0f, -1.0f);
             GL.TexCoord2(1.0, 1.0);
-            GL.Vertex3(0.5f, 1.0f, -1.0f);
+            GL.Vertex3(1.0f, 1.0f, -1.0f);
+            GL.TexCoord2(1.0, 0.0);
+            GL.Vertex3(1.0f, -1.0f, -1.0f);
+            GL.TexCoord2(0.0, 0.0);
+            GL.Vertex3(-1.0f, -1.0f, -1.0f);
+            GL.TexCoord2(0.0, 1.0);
+            GL.Vertex3(-1.0f, 1.0f, -1.0f);
 
             GL.End();
             GL.Disable(EnableCap.Texture2D);
@@ -301,13 +778,13 @@ namespace lab_opengl
             //GL.Color3(Color.LightGreen);
 
             GL.TexCoord2(1.0, 1.0);
-            GL.Vertex3(0.5f, 1.0f, -1.0f);
+            GL.Vertex3(1.0f, 1.0f, -1.0f);
             GL.TexCoord2(1.0, 0.0);
-            GL.Vertex3(0.5f, -1.0f, -1.0f);
+            GL.Vertex3(1.0f, -1.0f, -1.0f);
             GL.TexCoord2(0.0, 0.0);
-            GL.Vertex3(-0.5f, -1.0f, -1.0f);
+            GL.Vertex3(-1.0f, -1.0f, -1.0f);
             GL.TexCoord2(0.0, 1.0);
-            GL.Vertex3(-0.5f, 1.0f, -1.0f);
+            GL.Vertex3(-1.0f, 1.0f, -1.0f);
             GL.Color3(Color.Green);
 
             GL.End();
@@ -318,6 +795,25 @@ namespace lab_opengl
         {
             GL.Enable(EnableCap.Texture2D);
             GL.BindTexture(TextureTarget.Texture2D, texturesIDs[5]);
+            GL.Begin(PrimitiveType.Quads);
+            GL.Color3(Color.LightGreen);
+            GL.TexCoord2(1.0, 0.0);
+            GL.Vertex3(-0.5f, -1.0f, -1.0f);
+            GL.TexCoord2(0.0, 0.0);
+            GL.Vertex3(0.5f, -1.0f, -1.0f);
+            GL.TexCoord2(0.0, 1.0);
+            GL.Vertex3(0.5f, 1.0f, -1.0f);
+            GL.TexCoord2(1.0, 1.0);
+            GL.Vertex3(-0.5f, 1.0f, -1.0f);
+
+            GL.End();
+            GL.Disable(EnableCap.Texture2D);
+        }
+
+        private void drawForestQuad2()
+        {
+            GL.Enable(EnableCap.Texture2D);
+            GL.BindTexture(TextureTarget.Texture2D, texturesIDs[10]);
             GL.Begin(PrimitiveType.Quads);
             GL.Color3(Color.LightGreen);
             GL.TexCoord2(1.0, 0.0);
@@ -366,6 +862,67 @@ namespace lab_opengl
             GL.Vertex3(0.5f, 1.0f, -1.0f);
             GL.TexCoord2(1.0, 1.0);
             GL.Vertex3(-0.5f, 1.0f, -1.0f);
+
+            GL.End();
+            GL.Disable(EnableCap.Texture2D);
+        }
+
+        private void drawGrassQuad()
+        {
+            GL.Enable(EnableCap.Texture2D);
+            GL.BindTexture(TextureTarget.Texture2D, texturesIDs[8]);
+            GL.Begin(PrimitiveType.Quads);
+            //GL.Color3(Color.LightGreen);
+
+            GL.TexCoord2(1.0, 1.0);
+            GL.Vertex3(1.0f, 1.0f, -1.0f);
+            GL.TexCoord2(1.0, 0.0);
+            GL.Vertex3(1.0f, -1.0f, -1.0f);
+            GL.TexCoord2(0.0, 0.0);
+            GL.Vertex3(-1.0f, -1.0f, -1.0f);
+            GL.TexCoord2(0.0, 1.0);
+            GL.Vertex3(-1.0f, 1.0f, -1.0f);
+            GL.Color3(Color.Green);
+
+            GL.End();
+            GL.Disable(EnableCap.Texture2D);
+        }
+
+        private void drawSandsQuad()
+        {
+            GL.Enable(EnableCap.Texture2D);
+            GL.BindTexture(TextureTarget.Texture2D, texturesIDs[6]);
+            GL.Begin(PrimitiveType.Quads);
+            //GL.Color3(Color.LightGreen);
+
+            GL.TexCoord2(1.0, 1.0);
+            GL.Vertex3(1.0f, 1.0f, -1.0f);
+            GL.TexCoord2(1.0, 0.0);
+            GL.Vertex3(1.0f, -1.0f, -1.0f);
+            GL.TexCoord2(0.0, 0.0);
+            GL.Vertex3(-1.0f, -1.0f, -1.0f);
+            GL.TexCoord2(0.0, 1.0);
+            GL.Vertex3(-1.0f, 1.0f, -1.0f);
+
+            GL.End();
+            GL.Disable(EnableCap.Texture2D);
+        }
+
+        private void drawBridgeQuad()
+        {
+            GL.Enable(EnableCap.Texture2D);
+            GL.BindTexture(TextureTarget.Texture2D, texturesIDs[9]);
+            GL.Begin(PrimitiveType.Quads);
+            //GL.Color3(Color.LightGreen);
+
+            GL.TexCoord2(1.0, 1.0);
+            GL.Vertex3(1.0f, 1.0f, -1.0f);
+            GL.TexCoord2(1.0, 0.0);
+            GL.Vertex3(1.0f, -1.0f, -1.0f);
+            GL.TexCoord2(0.0, 0.0);
+            GL.Vertex3(-1.0f, -1.0f, -1.0f);
+            GL.TexCoord2(0.0, 1.0);
+            GL.Vertex3(-1.0f, 1.0f, -1.0f);
 
             GL.End();
             GL.Disable(EnableCap.Texture2D);
