@@ -126,16 +126,36 @@ namespace lab_opengl
             }
             if (glgraphics.dx > 17.249f)
                 glgraphics.dx = 17.249f;
-            if ((glgraphics.dx < 2.749f)&&(glgraphics.dx>-2.249f)&&(glgraphics.dy>-7.749f)&&(glgraphics.dy<2.249f))
+            if ((glgraphics.dx < 2.749f)&&(glgraphics.dx>2.249f)&&(glgraphics.dy>-7.749f)&&(glgraphics.dy<2.749f))
                 glgraphics.dx = 2.749f;
-            if ((glgraphics.dx > 7.749f)&& (glgraphics.dy < -2.749f) && (glgraphics.dy > -12.249f))
-                glgraphics.dx = 7.749f;
+            if ((glgraphics.dx > -2.749f) && (glgraphics.dx < -2.249f) && (glgraphics.dy > -7.249f) && (glgraphics.dy < 2.749f))
+                glgraphics.dx = -2.749f;
+            if ((glgraphics.dx > 7.249f)&& (glgraphics.dy < -2.749f))
+                glgraphics.dx = 7.249f;
+            if ((glgraphics.dx < -7.249f) && (glgraphics.dy > -12.749f) && (glgraphics.dy < -2.449f))
+                glgraphics.dx = -7.249f;
+            if (glgraphics.dx < -17.249f)
+                glgraphics.dx = -17.249f;
+            if ((glgraphics.dx < -12.249f) && (glgraphics.dy > 12.749f))
+                glgraphics.dx = -12.249f;
+
+
             if ((glgraphics.dy > 2.249f)&&(glgraphics.dx>-12.249f)&&(glgraphics.dy<5.0f))
                 glgraphics.dy = 2.249f;
             if ((glgraphics.dy < 7.749f) && (glgraphics.dx > -12.249f)&& (glgraphics.dy > 5.0f))
                 glgraphics.dy = 7.749f;
-            if ((glgraphics.dy < -2.249f)&&(glgraphics.dx>7.449f))
+            if ((glgraphics.dy < -2.249f)&&(glgraphics.dx>7.249f))
                 glgraphics.dy = -2.249f;
+            if ((glgraphics.dy > -7.749f) && (glgraphics.dy<-7.249f) && (glgraphics.dx > -2.749) && (glgraphics.dx < 2.749f))
+                glgraphics.dy = -7.749f;
+            if (glgraphics.dy < -12.249f)
+                glgraphics.dy = -12.249f;
+            if ((glgraphics.dy < -2.249f) && (glgraphics.dx < -7.249f))
+                glgraphics.dy = -2.249f;
+            if ((glgraphics.dy > 12.249f) && (glgraphics.dx < -12.449f))
+                glgraphics.dy = 12.249f;
+            if (glgraphics.dy > 17.249f)
+                glgraphics.dy = 17.249f;
         }
     }
 
