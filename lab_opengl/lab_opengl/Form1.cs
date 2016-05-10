@@ -136,8 +136,14 @@ namespace lab_opengl
                 glgraphics.dx = -7.249f;
             if (glgraphics.dx < -17.249f)
                 glgraphics.dx = -17.249f;
+            if ((glgraphics.dx > -12.749f) && (glgraphics.dy > 2.449f) && (glgraphics.dy < 7.449f))
+                glgraphics.dx = -12.749f;
             if ((glgraphics.dx < -12.249f) && (glgraphics.dy > 12.749f))
                 glgraphics.dx = -12.249f;
+            if ((glgraphics.dx > 2.249f) && (glgraphics.dx < 3.0f) && (glgraphics.dy < 12.749f) && (glgraphics.dy > 7.249f))
+                glgraphics.dx = 2.249f;
+            if ((glgraphics.dx < 12.749f) && (glgraphics.dx > 12.0f) && (glgraphics.dy < 12.449f) && (glgraphics.dy > 7.249f))
+                glgraphics.dx = 12.749f;
 
 
             if ((glgraphics.dy > 2.249f)&&(glgraphics.dx>-12.249f)&&(glgraphics.dy<5.0f))
@@ -156,6 +162,8 @@ namespace lab_opengl
                 glgraphics.dy = 12.249f;
             if (glgraphics.dy > 17.249f)
                 glgraphics.dy = 17.249f;
+            if ((glgraphics.dy < 12.749f) && (glgraphics.dy > 12.0f) && (glgraphics.dx < 12.749f) && (glgraphics.dx > 2.249f))
+                glgraphics.dy = 12.749f;
         }
     }
 
